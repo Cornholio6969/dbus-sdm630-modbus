@@ -4,6 +4,8 @@ Victron Venus OS D-Bus service for an Eastron SDM630 Modbus V3 three-phase meter
 
 It publishes the SDM630 as a Victron grid/genset/AC-load style meter so systems such as a MultiPlus-II can use the live power, voltage, current, frequency, power factor, and import/export energy values.
 
+<img width="430" height="245" alt="image" src="https://github.com/user-attachments/assets/570a29df-9bad-4b23-9f0a-5a608b5fbf45" />
+
 ## Features
 
 - Reads SDM630 Modbus RTU input registers directly over RS485.
