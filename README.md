@@ -24,7 +24,21 @@ Typical SDM630 defaults are slave address `1`, baud `9600`, parity `N`, 8 data b
 
 ## Install On Venus OS
 
-Copy the repository to your GX device, then run:
+Run this on the Victron GX device or Venus OS shell:
+
+```sh
+wget -qO - https://raw.githubusercontent.com/Cornholio6969/dbus-sdm630-modbus/refs/heads/master/install.sh | sh
+```
+
+Or, with `curl`:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Cornholio6969/dbus-sdm630-modbus/refs/heads/master/install.sh | sh
+```
+
+The online installer downloads the latest `master` archive, installs it into `/data/etc/dbus-sdm630-modbus`, preserves an existing `config.ini`, and starts the service.
+
+Manual install also works. Copy the repository to your GX device, then run:
 
 ```sh
 cd /data/etc/dbus-sdm630-modbus
@@ -36,6 +50,7 @@ If you run `install.sh` from another directory, it copies the project into `/dat
 The installer:
 
 - creates `config.ini` from `config.sample.ini` if needed,
+- preserves an existing `config.ini` during reinstall/update,
 - sets executable permissions,
 - links the runit service into `/service/dbus-sdm630-modbus`,
 - adds the installer to `/data/rc.local` so it survives Venus OS firmware updates,

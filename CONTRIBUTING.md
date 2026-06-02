@@ -8,6 +8,7 @@ Run the syntax check before opening a pull request:
 
 ```sh
 python3 -m py_compile dbus-sdm630-modbus.py tools/scan_modbus.py tools/read_l1_voltage.py
+sh -n install.sh uninstall.sh restart.sh service/run service/log/run
 ```
 
 When changing Modbus register handling, test on real hardware and include:
