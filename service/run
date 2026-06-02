@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "*** starting dbus-sdm630-modbus ***"
+exec 2>&1
+exec python3 -u /data/etc/dbus-sdm630-modbus/dbus-sdm630-modbus.py
