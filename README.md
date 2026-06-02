@@ -120,6 +120,35 @@ If the driver cannot read the meter, check:
 - Whether another process is using the USB serial port.
 - Logs in `/var/log/dbus-sdm630-modbus/current`.
 
+### Stop Venus OS From Claiming The Adapter
+
+On some GX devices, including a MultiPlus-II GX, the internal Victron system may occupy the USB RS485 adapter before this driver can open it. Add a udev rule to tell Venus OS to ignore that specific adapter.
+
+Create the rule:
+
+```sh
+nano /etc/udev/rules.d/99-ignore-sdm630.rules
+```
+
+Add this, replacing `A5069RR4` with your adapter serial if different:
+
+```udev
+SUBSYSTEM=="tty", ENV{ID_SERIAL_SHORT}=="A5069RR4", ENV{VE_SERVICE}="ignore"
+```
+
+Or, more specifically:
+
+```udev
+SUBSYSTEM=="tty", ATTRS{serial}=="A5069RR4", ENV{VE_SERVICE}="ignore"
+```
+
+Reload udev:
+
+```sh
+udevadm control --reload-rules
+udevadm trigger
+```
+
 ## D-Bus Paths
 
 The service publishes:
